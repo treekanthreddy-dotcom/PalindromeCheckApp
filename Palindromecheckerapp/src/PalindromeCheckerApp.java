@@ -2,21 +2,12 @@ import java.util.*;
 
 public class PalindromeCheckerApp {
 
-    // Recursive function
-    public static boolean isPalindrome(String str, int left, int right) {
-
-        // Base case
-        if (left >= right) {
-            return true;
+    // Recursive reverse function
+    public static String reverseString(String str) {
+        if (str.isEmpty()) {
+            return str;
         }
-
-        // If mismatch
-        if (str.charAt(left) != str.charAt(right)) {
-            return false;
-        }
-
-        // Recursive call
-        return isPalindrome(str, left + 1, right - 1);
+        return reverseString(str.substring(1)) + str.charAt(0);
     }
 
     public static void main(String[] args) {
@@ -29,9 +20,11 @@ public class PalindromeCheckerApp {
         // Normalize input
         String cleaned = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        boolean result = isPalindrome(cleaned, 0, cleaned.length() - 1);
+        // Reverse using recursion
+        String reversed = reverseString(cleaned);
 
-        if (result) {
+        // Compare
+        if (cleaned.equals(reversed)) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
