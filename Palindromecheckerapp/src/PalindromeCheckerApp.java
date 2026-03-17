@@ -9,31 +9,14 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Normalize: remove non-alphanumeric and convert to lowercase
-        input = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        // Normalize input: remove non-alphanumeric and convert to lowercase
+        String cleaned = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        // Reverse using StringBuilder
+        String reversed = new StringBuilder(cleaned).reverse().toString();
 
-        // Store characters
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);     // enqueue
-            stack.push(ch);    // push
-        }
-
-        boolean isPalindrome = true;
-
-        // Compare queue and stack
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Output
-        if (isPalindrome) {
+        // Compare
+        if (cleaned.equals(reversed)) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
