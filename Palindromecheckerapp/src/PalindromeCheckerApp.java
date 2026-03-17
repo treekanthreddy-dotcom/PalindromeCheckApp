@@ -2,35 +2,35 @@ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
+    // Method to check palindrome using char array
+    public static boolean isPalindrome(String input) {
+
+        char[] arr = input.toCharArray();
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter a string:");
+        System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Convert string to character array
-        char[] arr = input.toCharArray();
-
-        int start = 0;
-        int end = arr.length - 1;
-        boolean isPalindrome = true;
-
-        // Two-pointer comparison
-        while (start < end) {
-            if (arr[start] != arr[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        // Output result
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
+        if (isPalindrome(input)) {
+            System.out.println("Result: It is a Palindrome.");
         } else {
-            System.out.println(input + " is NOT a Palindrome.");
+            System.out.println("Result: It is NOT a Palindrome.");
         }
 
         sc.close();
