@@ -1,34 +1,38 @@
+import java.util.Scanner;
 
-        public class PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
-            /**
-             * Application entry point for UC2.
-             *
-             * @param args Command-line arguments
-             */
-            public static void main(String[] args) {
+    public static void main(String[] args) {
 
-                // Hardcoded input string
-                String input = "madam";
+        Scanner sc = new Scanner(System.in);
 
-                boolean isPalindrome = true;
+        System.out.println("Enter a string:");
+        String input = sc.nextLine();
 
-                // Loop only till half of the string length
-                for (int i = 0; i < input.length() / 2; i++) {
+        // Convert string to character array
+        char[] arr = input.toCharArray();
 
-                    // Compare characters from both ends
-                    if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                        isPalindrome = false;
-                        break;
-                    }
-                }
+        int start = 0;
+        int end = arr.length - 1;
+        boolean isPalindrome = true;
 
-                // Display result
-                if (isPalindrome) {
-                    System.out.println(input + " is a Palindrome.");
-                } else {
-                    System.out.println(input + " is NOT a Palindrome.");
-                }
+        // Two-pointer comparison
+        while (start < end) {
+            if (arr[start] != arr[end]) {
+                isPalindrome = false;
+                break;
             }
+            start++;
+            end--;
         }
 
+        // Output result
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is NOT a Palindrome.");
+        }
+
+        sc.close();
+    }
+}
