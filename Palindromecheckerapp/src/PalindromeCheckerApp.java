@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.*;
 
 public class PalindromeCheckerApp {
 
@@ -13,14 +12,28 @@ public class PalindromeCheckerApp {
         // Normalize input
         String cleaned = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-        // Reverse using Streams
-        String reversed = IntStream.range(0, cleaned.length())
-                .mapToObj(i -> cleaned.charAt(cleaned.length() - 1 - i))
-                .map(String::valueOf)
-                .collect(Collectors.joining());
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Compare
-        if (cleaned.equals(reversed)) {
+        // Add characters to deque
+        for (int i = 0; i < cleaned.length(); i++) {
+            deque.addLast(cleaned.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Compare front and rear
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Output result
+        if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
             System.out.println("Result: It is NOT a Palindrome.");
