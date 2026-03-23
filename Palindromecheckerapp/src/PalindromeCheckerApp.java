@@ -9,13 +9,11 @@ public class UseCase7PalindromeCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Normalize input (remove spaces + convert to lowercase)
         input = input.replaceAll("\\s+", "").toLowerCase();
 
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Add characters to Queue and Stack
         for (int i = 0; i < input.length(); i++) {
             char ch = input.charAt(i);
             queue.add(ch);
@@ -24,7 +22,6 @@ public class UseCase7PalindromeCheckerApp {
 
         boolean isPalindrome = true;
 
-        // Compare queue and stack
         while (!queue.isEmpty()) {
             if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
@@ -32,7 +29,6 @@ public class UseCase7PalindromeCheckerApp {
             }
         }
 
-        // Output result
         if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
