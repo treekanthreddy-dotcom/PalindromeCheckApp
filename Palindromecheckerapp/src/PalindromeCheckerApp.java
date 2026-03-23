@@ -12,19 +12,17 @@ public class PalindromeCheckerApp {
         Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Add characters to both Queue and Stack
         for (int i = 0; i < input.length(); i++) {
             char ch = input.charAt(i);
-            queue.add(ch);   // Enqueue
-            stack.push(ch);  // Push
+            queue.add(ch);   
+            stack.push(ch);  
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue (queue) and pop (stack)
         while (!queue.isEmpty()) {
-            char qChar = queue.remove(); // Dequeue
-            char sChar = stack.pop();    // Pop
+            char qChar = queue.remove(); 
+            char sChar = stack.pop();   
 
             if (qChar != sChar) {
                 isPalindrome = false;
@@ -32,7 +30,6 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Output result
         if (isPalindrome) {
             System.out.println("Result: It is a Palindrome.");
         } else {
