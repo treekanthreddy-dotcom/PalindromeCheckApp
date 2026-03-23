@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    // Method to check palindrome using char array
     public static boolean isPalindrome(String input) {
 
         char[] arr = input.toCharArray();
