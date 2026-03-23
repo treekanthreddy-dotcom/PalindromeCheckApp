@@ -9,14 +9,12 @@ public class PalindromeCheckerApp {
         System.out.println("Enter a string:");
         String input = sc.nextLine();
 
-        // Convert string to character array
         char[] arr = input.toCharArray();
 
         int start = 0;
         int end = arr.length - 1;
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
         while (start < end) {
             if (arr[start] != arr[end]) {
                 isPalindrome = false;
@@ -26,7 +24,6 @@ public class PalindromeCheckerApp {
             end--;
         }
 
-        // Output result
         if (isPalindrome) {
             System.out.println(input + " is a Palindrome.");
         } else {
